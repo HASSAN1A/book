@@ -1,0 +1,35 @@
+<?php
+
+
+
+
+
+include "connection.php";
+$id=$_POST['id'];
+
+$query = "SELECT f_name,l_name,depart_city,destination_city,depart_date,depart_time,quantity FROM customer_data WHERE  id_no='$id'";
+
+$result=mysqli_query($connect,$query);
+if(mysqli_num_rows($result)>0){
+    while ($row_result=mysqli_fetch_assoc($result)){
+
+
+        $customer_name = $row_result['f_name'];
+        $last_name = $row_result['l_name'];
+        $depart_city=$row_result['depart_city'];
+        $destination_city=$row_result['destination_city'];
+        $depart_date=$row_result['depart_date'];
+        $depart_time=$row_result['depart_time'];
+        $quantity=$row_result['quantity'];
+
+        echo "<br>";
+        echo $customer_name;echo "<br>";
+        echo $last_name; echo "<br>";
+        echo $depart_city; echo "<br>";
+        echo $destination_city; echo "<br>";
+        echo $depart_date; echo "<br>";
+        echo $depart_time; echo "<br>";
+        echo $quantity; echo "<br>";
+    }
+}
+
